@@ -4,12 +4,13 @@ import os
 
 app = Flask(__name__)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
+@app.route('/')
+def home():
+    return redirect(url_for('list_jobs'))  # Redirect to the job listing page
 
 @app.route('/favicon.ico')
 def favicon():
-    return 'assets/img/favicon.ico', 204 
+    return redirect(url_for('static', filename='img/favicon.ico')), 204  # Update favicon route
 
 # PostgreSQL configuration (Heroku environment variable)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'postgresql://localhost/dbname'
@@ -61,5 +62,5 @@ def update_job(id):
     db.session.commit()
     return redirect(url_for('list_jobs'))
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
