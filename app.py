@@ -7,6 +7,9 @@ app = Flask(__name__)
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
 
+@app.route('/favicon.ico')
+def favicon():
+    return 'assets/img/favicon.ico', 204 
 
 # PostgreSQL configuration (Heroku environment variable)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'postgresql://localhost/dbname'
