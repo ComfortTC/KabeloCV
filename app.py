@@ -34,7 +34,7 @@ with app.app_context():
 @app.route('/admin/jobs', methods=['GET'])
 def list_jobs():
     jobs = Job.query.all()
-    return render_template('admin.html', jobs=jobs)
+    return render_template('index.html', jobs=jobs)
 
 @app.route('/admin/job/new', methods=['POST'])
 def create_job():
