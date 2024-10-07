@@ -5,10 +5,6 @@ import os
 app = Flask(__name__)
 
 @app.route('/')
-def home():
-    return redirect(url_for('resume'))  # Serve the resume page by default
-
-@app.route('/')
 def resume():
     return render_template('index.html')  # Render the resume template
 
