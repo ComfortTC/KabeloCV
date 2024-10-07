@@ -13,7 +13,7 @@ def favicon():
     return redirect(url_for('static', filename='img/favicon.ico')), 204  # Update favicon route
 
 # PostgreSQL configuration (Heroku environment variable)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'postgresql://localhost/dbname'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://u5p73bnjcii92r:p06607f621271672f439fcd354079a12193e81a8bb7bf5e597e621a062f2115b0@c8m0261h0c7idk.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d12cq1lo29hl5d'
 db = SQLAlchemy(app)
 
 # Define a Job model
